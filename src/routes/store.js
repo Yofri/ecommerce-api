@@ -3,7 +3,7 @@ import {createItem, listItems, updateItem, removeItem} from '../controllers'
 import {isLogin, isAdmin, encode, logger} from '../middlewares'
 
 export default express.Router()
-  .post('/', /* isLogin,  */encode, logger, createItem)
+  .post('/', isLogin, isAdmin, encode, logger, createItem)
   .get('/', logger, listItems)
-  .put('/:id', isLogin, encode, logger, updateItem)
-  .delete('/:id', isLogin, logger, removeItem)
+  .put('/:id', isLogin, isAdmin, encode, logger, updateItem)
+  .delete('/:id', isLogin, isAdmin, logger, removeItem)
