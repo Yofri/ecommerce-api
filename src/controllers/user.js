@@ -55,12 +55,12 @@ const removeUser = async (req, res) => {
 const login = async (req, res) => {
   try {
     const user = await User.find({email: req.body.email})
-    if (!user.length) res.status(401).send({
+    if (!user.length) return res.status(401).send({
       msg: 'Email not found.'
     })
 
     const valid = await bcrypt.compare(req.body.password, user[0].password)
-    if (!valid) res.status(401).send({
+    if (!valid) return res.status(401).send({
       msg: 'Wrong password.'
     })
 
