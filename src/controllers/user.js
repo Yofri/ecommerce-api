@@ -14,12 +14,8 @@ const createUser = async (req, res) => {
 
 const listUsers = async (req, res) => {
   try {
-    // if (req.user.role === 'user') {
-      const users = await User.find()
-      res.status(200).send(users)
-    // } else {
-    //   res.status(401).send({msg: 'Unauthorized'})
-    // }
+    const users = await User.find()
+    res.status(200).send(users)
   } catch (err) {
     res.status(500).send(err)
   }

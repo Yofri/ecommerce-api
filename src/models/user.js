@@ -1,7 +1,7 @@
 import mongoose from 'mongoose'
 import isEmail from 'validator/lib/isEmail'
 
-export default mongoose.model('User', {
+export default mongoose.model('users', {
   name: {
     type: String,
     required: true,

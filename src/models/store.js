@@ -1,6 +1,6 @@
 import mongoose from 'mongoose'
 
-export default mongoose.model('Store', {
+export default mongoose.model('stores', {
   title: {
     type: String,
     required: true,
