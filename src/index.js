@@ -9,9 +9,9 @@ const app = express()
 const port = process.env.PORT || 3000
 
 app.use(cors())
-app.use('/ecommerce/user', user)
-app.use('/ecommerce/store', store)
-app.use('/ecommerce/transaction', transaction)
+app.use('/user', user)
+app.use('/store', store)
+app.use('/transaction', transaction)
 
 db.on('error', () => console.log(`Error connecting to database`))
 db.once('open', () => console.log(`Connected to database`))
