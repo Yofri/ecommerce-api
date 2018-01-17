@@ -1,12 +1,21 @@
-import {User} from '../models'
 import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
+import {User} from '../models'
 
 const createUser = async (req, res) => {
   try {
+    const isRegistered = await User.findOne({email: req.body.email})
+    if (isRegistered) return res.status(401).send({
+      msg: 'Email already registered.'
+    })
+
     req.body.password = await bcrypt.hash(req.body.password, 8)
     const user = await User.create(req.body)
-    res.status(200).send(user)
+    const token = jwt.sign({
+      id: user._id,
+      email: user.email
+    }, process.env.JWT_KEY)
+    res.status(200).send({token})
   } catch (err) {
     res.status(500).send(err)
   }

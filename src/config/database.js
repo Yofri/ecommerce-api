@@ -3,8 +3,7 @@ import dotenv from 'dotenv'
 
 dotenv.config()
 mongoose.connect(process.env.MLAB_URI)
-// mongoose.connect('mongodb://localhost/ecommerce')
 mongoose.Promise = global.Promise
-const db = mongoose.connection
+const connection = mongoose.connection
 
-export {mongoose, db}
+export {mongoose, connection}

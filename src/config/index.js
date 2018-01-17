@@ -1,3 +1,3 @@
-import {mongoose, db} from './database'
+import {mongoose, connection} from './database'
 
-export {mongoose, db}
+export {mongoose, connection}
